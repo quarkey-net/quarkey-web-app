@@ -13,15 +13,19 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
     "core-js": "^3.15.1",
-    "nuxt": "^2.15.7"
+    "nuxt": "^2.15.7",
+    "uninstall": "0.0.0"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.14.7",
+    "@babel/eslint-parser": "^7.14.9",
     "@nuxtjs/eslint-config": "^6.0.1",
     "@nuxtjs/eslint-module": "^3.0.2",
-    "eslint": "^7.29.0",
+    "autoprefixer": "^10.3.1",
+    "eslint": "^7.32.0",
     "eslint-plugin-nuxt": "^2.0.0",
-    "eslint-plugin-vue": "^7.12.1",
-    "nuxt-vite": "^0.1.1"
+    "eslint-plugin-vue": "^7.15.0",
+    "nuxt-vite": "^0.1.1",
+    "postcss": "^8.3.6",
+    "tailwindcss": "^2.2.7"
   }
 }
