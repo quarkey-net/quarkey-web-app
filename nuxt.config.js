@@ -16,8 +16,36 @@ export default {
     ]
   },
 
+  router: {
+    routes: [
+      {
+        path: '/',
+        components: 'pages/index.vue',
+        name: 'Index',
+        children: [
+          {
+            path: '/register',
+            components: 'pages/Register.vue',
+            name: 'Register'
+          },
+          {
+            path: '/mainPanel',
+            components: 'pages/mainPanel.vue',
+            name: 'mainPanel'
+          }
+        ]
+      }
+    ]
+  },
+
+  server: {
+    host: '127.0.0.1',
+    port: 3000
+  },
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '@/assets/global.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -30,18 +58,22 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/eslint
-    '@nuxtjs/eslint-module'
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/composition-api/module',
+    '@pinia/nuxt'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios',
-    'nuxt-vite'
+    '@nuxtjs/toast',
+    '@nuxtjs/axios'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    baseURL: 'http://localhost:8080/api'
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

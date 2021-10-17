@@ -1,7 +1,18 @@
 <template>
-  <Tutorial />
+  <register />
 </template>
 
 <script>
-export default {}
+import Register from './Register.vue'
+export default {
+  components: { Register },
+  data () {
+    return {
+      state: 'register'
+    }
+  }
+}
 </script>
+
+<style>
+</style>
