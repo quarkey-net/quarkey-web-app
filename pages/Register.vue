@@ -59,7 +59,6 @@
 import { useAccountStore } from '@/store/account'
 
 export default {
-  inject: ['state'],
 
   data () {
     return {
