@@ -72,10 +72,17 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: 'http://localhost:8080/api'
+    baseURL: 'https://quarkey.net/api'
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    extend (config) {
+      config.module.rules.push({
+        test: /\.mjs$/,
+        include: /node_module/,
+        type: 'javascript/auto'
+      })
+    }
   }
 }
