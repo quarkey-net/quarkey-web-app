@@ -72,7 +72,11 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: 'https://quarkey.net/api'
+    baseURL: 'https://quarkey.net/api',
+    credentials: true,
+    init (axios) {
+      axios.defaults.withCredentials = true
+    }
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
