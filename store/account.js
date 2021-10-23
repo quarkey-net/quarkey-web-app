@@ -34,14 +34,14 @@ export const useAccountStore = defineStore({
     },
 
     async fetchPasswordItems () {
-      axios.defaults.headers.common['Access-Control-Allow-Headers'] = '*'
+      // axios.defaults.headers.common['Access-Control-Allow-Headers'] = '*'
       await axios({
         method: 'GET',
-        baseURL: 'http://localhost:8080/api/account/item/password',
+        baseURL: 'https://quarkey.net/api/account/item/password',
         withCredentials: true,
         headers: {
-          'Access-Control-Allow-Origin': 'http://localhost:8080',
-          'Access-Control-Allow-Methods': '*',
+          // 'Access-Control-Allow-Origin': 'http://localhost:8080',
+          // 'Access-Control-Allow-Methods': '*',
           'Content-Type': 'application/x-www-form-urlencoded',
           Authorization: this.token
         },
