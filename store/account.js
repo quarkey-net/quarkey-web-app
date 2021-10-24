@@ -9,7 +9,8 @@ export const useAccountStore = defineStore({
     email: null,
     roles: [],
     token: null,
-    passwordItems: []
+    passwordItems: [],
+    tagSlots: []
   }),
 
   actions: {
@@ -49,7 +50,10 @@ export const useAccountStore = defineStore({
           what: 'sd'
         }
       }).then((response) => {
-        this.$patch({ passwordItems: response.data.content.items })
+        this.$patch({
+          passwordItems: response.data.content.items,
+          tagSlots: response.data.content.tag_slot
+        })
       }).catch(() => {
         // eslint-disable-next-line no-console
         console.log('Failed to get password items')
@@ -73,6 +77,10 @@ export const useAccountStore = defineStore({
         email: state.email,
         roles: state.roles
       }
+    },
+
+    getTagSlots (state) {
+      return state.tagSlots
     }
   }
 })

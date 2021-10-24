@@ -41,10 +41,17 @@
             <div class="category-block-list">
               <a href="#" class="category-item">
                 <div class="category-item-title">All entries</div>
-                <div class="category-item-indicator">35</div>
+                <div class="category-item-indicator">{{ getPasswordItems.length }}</div>
               </a>
               <hr>
-              <a href="#" class="category-item">
+              <a v-for="slot in getTagSlots" :key="slot.id" href="#" class="category-item">
+                <div class="category-item-title">
+                  <i class="category-item-icon twa twa-telephone" />
+                  {{ slot.name }}
+                </div>
+                <div class="category-item-indicator">{{ slot.items.length }}</div>
+              </a>
+              <!-- <a href="#" class="category-item">
                 <div class="category-item-title">
                   <i class="category-item-icon twa twa-telephone" />
                   Social medias
@@ -64,7 +71,7 @@
                   Online shops
                 </div>
                 <div class="category-item-indicator">3</div>
-              </a>
+              </a> -->
               <a href="#" class="category-item add">
                 <div class="category-item-title">
                   <span class="category-item-icon mdi mdi-plus" />
@@ -78,7 +85,7 @@
               Shared
             </div>
             <div class="category-block-list">
-              <a href="#" class="category-item">
+              <!-- <a href="#" class="category-item">
                 <div class="category-item-title">
                   <i class="category-item-icon twa twa-shopping-bags" />
                   Online shops
@@ -91,7 +98,7 @@
                   Marketing
                 </div>
                 <div class="category-item-indicator">7</div>
-              </a>
+              </a> -->
             </div>
           </div>
         </div>
@@ -183,12 +190,12 @@
                         Username
                       </div>
                     </th>
-                    <th>
+                    <!--  <th>
                       <div>
                         <span class="mdi mdi-at" />
                         Email address
                       </div>
-                    </th>
+                    </th> -->
                     <th>
                       <div>
                         <span class="mdi mdi-asterisk" />
@@ -213,9 +220,9 @@
                     <td class="row-text">
                       {{ item.login }}
                     </td>
-                    <td class="row-email">
+                    <!-- <td class="row-email">
                       jhon.doe@gmail.com
-                    </td>
+                    </td> -->
                     <td class="row-key">
                       ***************
                     </td>
@@ -257,7 +264,8 @@ export default {
 
   computed: {
     ...mapState(useAccountStore, ['getPasswordItems']),
-    ...mapState(useAccountStore, ['getAccountInfos'])
+    ...mapState(useAccountStore, ['getAccountInfos']),
+    ...mapState(useAccountStore, ['getTagSlots'])
   },
 
   beforeMount () {
