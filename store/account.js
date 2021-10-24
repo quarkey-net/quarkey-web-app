@@ -73,6 +73,8 @@ export const useAccountStore = defineStore({
     },
 
     getPasswordItems (state) {
+      console.log('getPasswordItems()')
+      console.dir(state.passwordItems)
       return state.passwordItems.filter(function (e) {
         for (let i = 0; i < e.tags.length; i++) {
           if (e.tags[i] === state.targetViewTag) {
