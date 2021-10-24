@@ -134,10 +134,10 @@
             </div>
             -->
 
-            <a href="#" class="btn secondary" @click="fetchData">
+            <!-- <a href="#" class="btn secondary" @click="fetchData">
               Share with collaborators
               <span class="mdi mdi-link-variant" />
-            </a>
+            </a> -->
             <!--
             <a href="#" class="btn primary">
               New entry
