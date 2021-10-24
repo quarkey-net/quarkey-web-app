@@ -11,7 +11,7 @@
         <div class="content">
           <div class="user-profile">
             <div class="user-profile-icon">
-              <span>J</span>
+              <span>{{ getAccountInfos['username'][0].toUpperCase() }}</span>
             </div>
             {{ getAccountInfos['username'] }}
             <span class="label">
@@ -47,7 +47,7 @@
               <a v-for="slot in getTagSlots" :key="slot.id" href="#" class="category-item">
                 <div class="category-item-title">
                   <i class="category-item-icon twa twa-telephone" />
-                  {{ slot.name }}
+                  {{ slot.name[0].toUpperCase() }}
                 </div>
                 <div class="category-item-indicator">{{ slot.items.length }}</div>
               </a>
@@ -209,7 +209,7 @@
                     <td class="row-title">
                       <div>
                         <div class="row-title-icon">
-                          <span>B</span>
+                          <span>{{ item.name[0].toUpperCase() }}</span>
                         </div>
                         {{ item.name }}
                       </div>
