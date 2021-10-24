@@ -10,7 +10,8 @@ export const useAccountStore = defineStore({
     roles: [],
     token: null,
     passwordItems: [],
-    tagSlots: []
+    tagSlots: [],
+    targetViewTag: 'global'
   }),
 
   actions: {
@@ -58,6 +59,10 @@ export const useAccountStore = defineStore({
         // eslint-disable-next-line no-console
         console.log('Failed to get password items')
       })
+    },
+
+    changeTargetItems (_targetTag) {
+      this.$patch({ targetViewTag: _targetTag })
     }
   },
 
@@ -67,7 +72,14 @@ export const useAccountStore = defineStore({
     },
 
     getPasswordItems (state) {
-      return state.passwordItems
+      return state.passwordItems.filter(function (e) {
+        for (let i = 0; i < e.tags.length; i++) {
+          if (e.tags[i] === state.targetViewTag) {
+            return true
+          }
+        }
+        return false
+      })
     },
 
     getAccountInfos (state) {

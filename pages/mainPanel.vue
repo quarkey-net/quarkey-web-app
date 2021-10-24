@@ -44,10 +44,10 @@
                 <div class="category-item-indicator">{{ getPasswordItems.length }}</div>
               </a>
               <hr>
-              <a v-for="slot in getTagSlots" :key="slot.id" href="#" class="category-item">
+              <a v-for="slot in getTagSlots" :key="slot.id" href="#" class="category-item" @click="changeTargetItems(slot.name)">
                 <div class="category-item-title">
                   <i class="category-item-icon twa twa-telephone" />
-                  {{ slot.name[0].toUpperCase() }}
+                  {{ slot.name }}
                 </div>
                 <div class="category-item-indicator">{{ slot.items.length }}</div>
               </a>
@@ -250,7 +250,7 @@
 </template>
 
 <script>
-import { mapState } from 'pinia'
+import { mapActions, mapState } from 'pinia'
 import { useAccountStore } from '@/store/account'
 
 export default {
@@ -258,6 +258,7 @@ export default {
     return {
       userStore: useAccountStore(),
       passwordItems: [],
+      targetViewTag: 'global',
       username: null
     }
   },
@@ -265,7 +266,8 @@ export default {
   computed: {
     ...mapState(useAccountStore, ['getPasswordItems']),
     ...mapState(useAccountStore, ['getAccountInfos']),
-    ...mapState(useAccountStore, ['getTagSlots'])
+    ...mapState(useAccountStore, ['getTagSlots']),
+    ...mapActions(useAccountStore, ['changeTargetItems'])
   },
 
   beforeMount () {
