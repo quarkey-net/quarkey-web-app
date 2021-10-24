@@ -266,8 +266,7 @@ export default {
   computed: {
     ...mapState(useAccountStore, ['getPasswordItems']),
     ...mapState(useAccountStore, ['getAccountInfos']),
-    ...mapState(useAccountStore, ['getTagSlots']),
-    ...mapActions(useAccountStore, ['changeTargetItems'])
+    ...mapState(useAccountStore, ['getTagSlots'])
   },
 
   beforeMount () {
@@ -291,7 +290,9 @@ export default {
     fetchData () {
       console.log('username : ' + this.username)
       this.userStore.fetchPasswordItems()
-    }
+    },
+
+    ...mapActions(useAccountStore, ['changeTargetItems'])
   }
 }
 </script>
