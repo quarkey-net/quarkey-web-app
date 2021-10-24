@@ -144,7 +144,7 @@
               <span class="mdi mdi-plus"></span>
             </a>
             -->
-            <div class="double-btn">
+            <div class="double-btn" @click="printItems()">
               <a href="#" class="btn primary">
                 New entry
               </a>
