@@ -561,6 +561,8 @@ export default {
   .user-profile {
     display: flex;
     grid-gap: 12px;
+    color: white;
+    font-size: 14px;
     align-items: center;
   }
 
