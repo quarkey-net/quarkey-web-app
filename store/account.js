@@ -51,10 +51,17 @@ export const useAccountStore = defineStore({
           what: 'sd'
         }
       }).then((response) => {
-        this.$patch({
-          passwordItems: response.data.content.items,
-          tagSlots: response.data.content.tag_slot
-        })
+        try {
+          this.$patch({
+            passwordItems: response.data.content.items,
+            tagSlots: response.data.content.tag_slot
+          })
+        } catch (e) {
+          this.$patch({
+            passwordItems: [],
+            tagSlots: []
+          })
+        }
       }).catch(() => {
         // eslint-disable-next-line no-console
         console.log('Failed to get password items')
@@ -64,6 +71,7 @@ export const useAccountStore = defineStore({
     changeTargetItems (_targetTag) {
       console.log('old target : ' + this.targetViewTag + ', new target : ' + _targetTag)
       this.$patch({ targetViewTag: _targetTag })
+      this.getPasswordItems()
     }
   },
 
@@ -73,16 +81,13 @@ export const useAccountStore = defineStore({
     },
 
     getPasswordItems: (state) => {
-      return state.getPasswordItems
-      /* state.passwordItems.filter(function (e) {
-        for (let i = 0; i < e.tags.length; i++) {
-          if (e.tags[i] === state.targetViewTag) {
-            console.dir(e)
-            return true
-          }
-        }
-        return false
-      }, []) */
+      try {
+        return state.passwordItems.filter((itm) => {
+          return itm.login === 'nicdouille38'
+        })
+      } catch (e) {
+        return state.passwordItems
+      }
     },
 
     getAccountInfos (state) {

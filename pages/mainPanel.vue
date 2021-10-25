@@ -257,7 +257,7 @@ export default defineComponent({
   setup () {
     const userStore = useAccountStore()
     const targetViewTag = ref('global')
-    const username = ref(null)
+    const username = ref('')
 
     onBeforeMount(() => {
       console.log('before mount')
@@ -269,12 +269,10 @@ export default defineComponent({
     })
 
     const printItems = () => {
-      console.log('username : ' + username.value)
       console.dir(userStore.getPasswordItems)
     }
 
     const fetchData = () => {
-      console.log('username : ' + username.value)
       userStore.fetchPasswordItems()
     }
 
