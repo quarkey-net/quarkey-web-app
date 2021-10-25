@@ -11,9 +11,9 @@
         <div class="content">
           <div class="user-profile">
             <div class="user-profile-icon">
-              <span>{{ useAccountStore.getAccountInfos['username'][0].toUpperCase() }}</span>
+              <span>{{ userStore.getAccountInfos['username'][0].toUpperCase() }}</span>
             </div>
-            {{ useAccountStore.getAccountInfos['username'] }}
+            {{ userStore.getAccountInfos['username'] }}
             <span class="label">
               PRO
             </span>
@@ -41,10 +41,10 @@
             <div class="category-block-list">
               <a href="#" class="category-item">
                 <div class="category-item-title">All entries</div>
-                <div class="category-item-indicator">{{ useAccountStore.getPasswordItems.length }}</div>
+                <div class="category-item-indicator">{{ userStore.getPasswordItems.length }}</div>
               </a>
               <hr>
-              <a v-for="slot in useAccountStore.getTagSlots" :key="slot.id" href="#" class="category-item" @click="useAccountStore.changeTargetItems(slot.name)">
+              <a v-for="slot in userStore.getTagSlots" :key="slot.id" href="#" class="category-item" @click="userStore.changeTargetItems(slot.name)">
                 <div class="category-item-title">
                   <i class="category-item-icon twa twa-telephone" />
                   {{ slot.name }}
@@ -110,7 +110,7 @@
         <div class="content">
           <div id="breadcrumbs">
             <div id="breadcrumbs-path">
-              <span> {{ useAccountStore.getAccountInfos['username'] }} </span>
+              <span> {{ userStore.getAccountInfos['username'] }} </span>
               <span>/</span>
               <span id="breadcrumbs-current-page">Work</span>
             </div>
@@ -205,7 +205,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="item in useAccountStore.getPasswordItems" :key="item.id">
+                  <tr v-for="item in userStore.getPasswordItems" :key="item.id">
                     <td class="row-title">
                       <div>
                         <div class="row-title-icon">
@@ -250,12 +250,13 @@
 </template>
 
 <script>
-// import { mapActions, mapState } from 'pinia'
 import { useAccountStore } from '@/store/account'
 
 export default {
   data () {
     return {
+      userStore: useAccountStore(),
+      targetViewTag: 'global',
       username: null
     }
   },
@@ -268,7 +269,7 @@ export default {
 
   beforeMount () {
     console.log('before mount')
-    useAccountStore.fetchPasswordItems()
+    this.userStore.fetchPasswordItems()
   },
 
   mounted () {
@@ -282,11 +283,11 @@ export default {
   methods: {
     printItems () {
       console.log('username : ' + this.username)
-      console.dir(useAccountStore.getPasswordItems)
+      console.dir(this.userStore.getPasswordItems)
     },
     fetchData () {
       console.log('username : ' + this.username)
-      useAccountStore.fetchPasswordItems()
+      this.userStore.fetchPasswordItems()
     }
 
     // ...mapActions(useAccountStore, ['changeTargetItems'])
