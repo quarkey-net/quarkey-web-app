@@ -250,49 +250,43 @@
 </template>
 
 <script>
+import { ref, onBeforeMount, onMounted, defineComponent } from '@nuxtjs/composition-api'
 import { useAccountStore } from '@/store/account'
 
-export default {
-  data () {
-    return {
-      userStore: useAccountStore(),
-      targetViewTag: 'global',
-      username: null
-    }
-  },
+export default defineComponent({
+  setup () {
+    const userStore = useAccountStore()
+    const targetViewTag = ref('global')
+    const username = ref(null)
 
-  /* computed: {
-    ...mapState(useAccountStore, ['getPasswordItems']),
-    ...mapState(useAccountStore, ['getAccountInfos']),
-    ...mapState(useAccountStore, ['getTagSlots'])
-  }, */
+    onBeforeMount(() => {
+      console.log('before mount')
+      this.userStore.fetchPasswordItems()
+    })
 
-  beforeMount () {
-    console.log('before mount')
-    this.userStore.fetchPasswordItems()
-  },
+    onMounted(() => {
+      console.log('mounted')
+    })
 
-  mounted () {
-    console.log('mounted')
-  },
-
-  beforeUpdate () {
-    // loop
-  },
-
-  methods: {
-    printItems () {
+    const printItems = () => {
       console.log('username : ' + this.username)
       console.dir(this.userStore.getPasswordItems)
-    },
-    fetchData () {
+    }
+
+    const fetchData = () => {
       console.log('username : ' + this.username)
       this.userStore.fetchPasswordItems()
     }
 
-    // ...mapActions(useAccountStore, ['changeTargetItems'])
+    return {
+      fetchData,
+      printItems,
+      userStore,
+      targetViewTag,
+      username
+    }
   }
-}
+})
 </script>
 
 <style scoped>
