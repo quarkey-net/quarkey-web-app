@@ -11,9 +11,9 @@
         <div class="content">
           <div class="user-profile">
             <div class="user-profile-icon">
-              <span>{{ getAccountInfos['username'][0].toUpperCase() }}</span>
+              <span>{{ useAccountStore.getAccountInfos['username'][0].toUpperCase() }}</span>
             </div>
-            {{ getAccountInfos['username'] }}
+            {{ useAccountStore.getAccountInfos['username'] }}
             <span class="label">
               PRO
             </span>
@@ -41,10 +41,10 @@
             <div class="category-block-list">
               <a href="#" class="category-item">
                 <div class="category-item-title">All entries</div>
-                <div class="category-item-indicator">{{ getPasswordItems.length }}</div>
+                <div class="category-item-indicator">{{ useAccountStore.getPasswordItems.length }}</div>
               </a>
               <hr>
-              <a v-for="slot in getTagSlots" :key="slot.id" href="#" class="category-item" @click="changeTargetItems(slot.name)">
+              <a v-for="slot in useAccountStore.getTagSlots" :key="slot.id" href="#" class="category-item" @click="useAccountStore.changeTargetItems(slot.name)">
                 <div class="category-item-title">
                   <i class="category-item-icon twa twa-telephone" />
                   {{ slot.name }}
@@ -110,7 +110,7 @@
         <div class="content">
           <div id="breadcrumbs">
             <div id="breadcrumbs-path">
-              <span> {{ getAccountInfos['username'] }} </span>
+              <span> {{ useAccountStore.getAccountInfos['username'] }} </span>
               <span>/</span>
               <span id="breadcrumbs-current-page">Work</span>
             </div>
@@ -205,7 +205,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="item in getPasswordItems" :key="item.id">
+                  <tr v-for="item in useAccountStore.getPasswordItems" :key="item.id">
                     <td class="row-title">
                       <div>
                         <div class="row-title-icon">
@@ -250,28 +250,25 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'pinia'
+// import { mapActions, mapState } from 'pinia'
 import { useAccountStore } from '@/store/account'
 
 export default {
   data () {
     return {
-      userStore: useAccountStore(),
-      passwordItems: [],
-      targetViewTag: 'global',
       username: null
     }
   },
 
-  computed: {
+  /* computed: {
     ...mapState(useAccountStore, ['getPasswordItems']),
     ...mapState(useAccountStore, ['getAccountInfos']),
     ...mapState(useAccountStore, ['getTagSlots'])
-  },
+  }, */
 
   beforeMount () {
     console.log('before mount')
-    this.userStore.fetchPasswordItems()
+    useAccountStore.fetchPasswordItems()
   },
 
   mounted () {
@@ -285,14 +282,14 @@ export default {
   methods: {
     printItems () {
       console.log('username : ' + this.username)
-      console.dir(this.getPasswordItems)
+      console.dir(useAccountStore.getPasswordItems)
     },
     fetchData () {
       console.log('username : ' + this.username)
-      this.userStore.fetchPasswordItems()
-    },
+      useAccountStore.fetchPasswordItems()
+    }
 
-    ...mapActions(useAccountStore, ['changeTargetItems'])
+    // ...mapActions(useAccountStore, ['changeTargetItems'])
   }
 }
 </script>
