@@ -20,25 +20,30 @@
 </template>
 
 <script>
+import { ref } from '@nuxtjs/composition-api'
 export default {
   emits: ['change-display-mode'],
+  setup (props, { emit }) {
+    const state = ref('login')
 
-  data () {
-    return {
-      state: 'login'
+    const setRegisterEvent = () => {
+      emit('setRegisterEvent', 'register')
     }
-  },
 
-  methods: {
-    setRegisterEvent () {
-      this.$emit('setRegisterEvent', 'register')
-    },
-    setLoginEvent () {
-      this.$emit('setLoginEvent', 'login')
-    },
-    updateDisplay (_state) {
-      this.state = _state
-      this.$emit('change-display-mode', _state)
+    const setLoginEvent = () => {
+      emit('setLoginEvent', 'login')
+    }
+
+    const updateDisplay = (_state) => {
+      state.value = _state
+      emit('change-display-mode', _state)
+    }
+
+    return {
+      state,
+      setRegisterEvent,
+      setLoginEvent,
+      updateDisplay
     }
   }
 }

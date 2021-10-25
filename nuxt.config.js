@@ -19,15 +19,10 @@ export default {
   router: {
     routes: [
       {
-        path: '/',
-        components: 'pages/index.vue',
-        name: 'Index',
+        path: '/authentication',
+        components: 'pages/Authentication.vue',
+        name: 'Authentication',
         children: [
-          {
-            path: '/register',
-            components: 'pages/Register.vue',
-            name: 'Register'
-          },
           {
             path: '/mainPanel',
             components: 'pages/mainPanel.vue',

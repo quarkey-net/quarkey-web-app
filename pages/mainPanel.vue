@@ -261,7 +261,7 @@ export default defineComponent({
 
     onBeforeMount(() => {
       console.log('before mount')
-      this.userStore.fetchPasswordItems()
+      userStore.fetchPasswordItems()
     })
 
     onMounted(() => {
@@ -269,13 +269,13 @@ export default defineComponent({
     })
 
     const printItems = () => {
-      console.log('username : ' + this.username)
-      console.dir(this.userStore.getPasswordItems)
+      console.log('username : ' + username.value)
+      console.dir(userStore.getPasswordItems)
     }
 
     const fetchData = () => {
-      console.log('username : ' + this.username)
-      this.userStore.fetchPasswordItems()
+      console.log('username : ' + username.value)
+      userStore.fetchPasswordItems()
     }
 
     return {

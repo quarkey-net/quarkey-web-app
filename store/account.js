@@ -73,7 +73,8 @@ export const useAccountStore = defineStore({
     },
 
     getPasswordItems: (state) => {
-      state.passwordItems.filter(function (e) {
+      return state.getPasswordItems
+      /* state.passwordItems.filter(function (e) {
         for (let i = 0; i < e.tags.length; i++) {
           if (e.tags[i] === state.targetViewTag) {
             console.dir(e)
@@ -81,7 +82,7 @@ export const useAccountStore = defineStore({
           }
         }
         return false
-      }, [])
+      }, []) */
     },
 
     getAccountInfos (state) {
