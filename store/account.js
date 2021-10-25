@@ -82,7 +82,9 @@ export const useAccountStore = defineStore({
     getPasswordItems: (state) => {
       try {
         return state.passwordItems.filter((itm) => {
-          return itm.login === 'nicdouille38'
+          return itm.filter((tag) => {
+            return tag.name === state.targetViewTag
+          })
         })
       } catch (e) {
         return state.passwordItems
