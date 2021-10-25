@@ -71,7 +71,6 @@ export const useAccountStore = defineStore({
     changeTargetItems (_targetTag) {
       console.log('old target : ' + this.targetViewTag + ', new target : ' + _targetTag)
       this.$patch({ targetViewTag: _targetTag })
-      this.getPasswordItems()
     }
   },
 
