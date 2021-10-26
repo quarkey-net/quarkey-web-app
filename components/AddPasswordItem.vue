@@ -1,5 +1,5 @@
 <template>
-  <div class="overlay">
+  <div id="add-password-item" class="overlay">
     <div class="popup" />
   </div>
 </template>
@@ -15,6 +15,7 @@
     transition: opacity 500ms;
     visibility: visible;
     opacity: 1;
+    z-index: 10;
   }
 
   .popup {
