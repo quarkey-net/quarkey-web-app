@@ -1,5 +1,5 @@
 <template>
-  <div id="add-password-item" class="overlay">
+  <div class="overlay">
     <div class="popup" />
   </div>
 </template>
@@ -13,11 +13,6 @@
     right: 0;
     background: rgba(0, 0, 0, 0.7);
     transition: opacity 500ms;
-    visibility: hidden;
-    opacity: 0;
-  }
-
-  .overlay:target {
     visibility: visible;
     opacity: 1;
   }

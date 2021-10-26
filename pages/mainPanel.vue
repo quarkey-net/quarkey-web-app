@@ -1,6 +1,6 @@
 <template>
   <div>
-    <AddPasswordItem />
+    <AddPasswordItem v-show="overlay === 'add-password-item'" />
     <link rel="stylesheet" type="text/css" href="~/assets/reset.css">
     <div id="side-bar">
       <div id="head" class="top-bar">
@@ -146,7 +146,7 @@
             </a>
             -->
             <div class="double-btn" @click="printItems()">
-              <a href="#add-password-item" class="btn primary">
+              <a href="#" class="btn primary" @click="overlay = 'add-password-item'">
                 New entry
               </a>
               <a href="#" onclick="myFunction()" class="btn primary">
@@ -259,6 +259,7 @@ export default defineComponent({
     const userStore = useAccountStore()
     const targetViewTag = ref('global')
     const username = ref('')
+    const overlay = ref('')
 
     onBeforeMount(() => {
       console.log('before mount')
@@ -278,6 +279,7 @@ export default defineComponent({
     }
 
     return {
+      overlay,
       fetchData,
       printItems,
       userStore,
