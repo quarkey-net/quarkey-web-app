@@ -1,5 +1,6 @@
 <template>
   <div>
+    <AddPasswordItem />
     <link rel="stylesheet" type="text/css" href="~/assets/reset.css">
     <div id="side-bar">
       <div id="head" class="top-bar">
@@ -145,7 +146,7 @@
             </a>
             -->
             <div class="double-btn" @click="printItems()">
-              <a href="#" class="btn primary">
+              <a href="#add-password-item" class="btn primary">
                 New entry
               </a>
               <a href="#" onclick="myFunction()" class="btn primary">
