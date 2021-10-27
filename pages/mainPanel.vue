@@ -12,7 +12,7 @@
         <div class="content">
           <div class="user-profile">
             <div class="user-profile-icon">
-              <span>{{ userStore.getAccountInfos['username'][0].toUpperCase() }}</span>
+              <span>E</span>
             </div>
             {{ userStore.getAccountInfos['username'] }}
             <span class="label">
@@ -145,11 +145,11 @@
               <span class="mdi mdi-plus"></span>
             </a>
             -->
-            <div class="double-btn" @click="printItems()">
+            <div class="double-btn">
               <a href="#add-password-item" class="btn primary">
                 New entry
               </a>
-              <a href="#" onclick="myFunction()" class="btn primary">
+              <a href="#" class="btn primary">
                 <span class="mdi mdi-chevron-down" />
               </a>
             </div>
