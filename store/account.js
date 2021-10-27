@@ -71,6 +71,28 @@ export const useAccountStore = defineStore({
     changeTargetItems (_targetTag) {
       console.log('old target : ' + this.targetViewTag + ', new target : ' + _targetTag)
       this.$patch({ targetViewTag: _targetTag })
+    },
+
+    async addPasswordItem (_name, _description, _login, _password, _url) {
+      await axios({
+        method: 'POST',
+        baseURL: 'https://quarkey.net/api/account/item/password',
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data: {
+          name: _name,
+          description: _description,
+          login: _login,
+          password: _password,
+          url: _url
+        }
+      }).then((response) => {
+        this.passwordItems.push(response.data.content)
+      }).catch(() => {
+        console.warn('Failed to password item')
+      })
     }
   },
 
