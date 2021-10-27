@@ -15,7 +15,7 @@
         </div>
       </div>
       <div class="area-right">
-        <textarea placeholder="Add description..." />
+        <textarea v-model="form.description" placeholder="Add description..." />
         <div class="separator-right" />
         <div class="f-row-right button-area">
           <a href="#" class="btn secondary">Cancel</a>
@@ -39,6 +39,7 @@ export default defineComponent({
       url: '',
       category: 'All Category',
       password: '',
+      description: '',
       dataTest: [{ id: 'test', name: 'All Category' }, { id: 'test1', name: 'Games' }, { id: 'test2', name: 'Pro' }],
       test: computed(() => {
         console.log('name : ' + form.name + ', login : ' + form.login + ', url : ' + form.url)
