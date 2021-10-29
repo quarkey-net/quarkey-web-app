@@ -206,7 +206,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="item in userStore.getPasswordItems" :key="item.id">
+                  <tr v-for="item in passwordItems" :key="item.id">
                     <td class="row-title">
                       <div>
                         <div class="row-title-icon">
@@ -251,7 +251,7 @@
 </template>
 
 <script>
-import { ref, onBeforeMount, onMounted, defineComponent } from '@nuxtjs/composition-api'
+import { ref, onBeforeMount, onMounted, defineComponent, computed } from '@nuxtjs/composition-api'
 import { useAccountStore } from '@/store/account'
 
 export default defineComponent({
@@ -283,6 +283,7 @@ export default defineComponent({
       fetchData,
       printItems,
       userStore,
+      passwordItems: computed(() => userStore.passwordItems),
       targetViewTag,
       username
     }
