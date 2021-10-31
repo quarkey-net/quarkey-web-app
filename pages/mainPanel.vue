@@ -278,18 +278,19 @@ export default defineComponent({
       userStore.fetchPasswordItems()
     }
 
-    const getTargetItem = (itm, targetTag) => {
+    /* const getTargetItem = (itm, targetTag) => {
       itm.tags.forEach((tag) => {
         return tag.name === targetTag
       })
-    }
+    } */
 
-    const storedPasswordItems = computed(() => {
+    /* const storedPasswordItems = computed(() => {
       return userStore.getPasswordItems
-    })
+    }) */
 
     const passwordItems = computed(() => {
-      return storedPasswordItems.filter(itm => getTargetItem(itm, targetViewTag.value))
+      // return storedPasswordItems.filter(itm => getTargetItem(itm, targetViewTag.value))
+      return userStore.getPasswordItems.filter(itm => itm.login === 'nicdouille38')
     })
 
     return {
