@@ -283,7 +283,7 @@ export default defineComponent({
       fetchData,
       printItems,
       userStore,
-      passwordItems: computed(() => userStore.getPasswordItems),
+      passwordItems: computed(() => userStore.getPasswordItemsByTag),
       targetViewTag,
       username
     }

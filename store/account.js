@@ -102,15 +102,16 @@ export const useAccountStore = defineStore({
     },
 
     getPasswordItems: (state) => {
-      try {
-        return state.passwordItems.filter((itm) => {
-          return itm.filter((tag) => {
-            return tag.name === state.targetViewTag
-          })
-        })
-      } catch (e) {
-        return state.passwordItems
-      }
+      return state.passwordItems
+    },
+
+    getPasswordItemsByTag: (state) => {
+      return this.getPasswordItems.filter((itm) => {
+        // eslint-disable-next-line no-unreachable-loop
+        for (let i = 0; i < itm.tags.length; i++) {
+          return itm.tags[i].name === state.targetViewTag
+        }
+      })
     },
 
     getAccountInfos (state) {
