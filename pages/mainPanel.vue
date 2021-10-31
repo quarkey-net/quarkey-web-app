@@ -278,12 +278,22 @@ export default defineComponent({
       userStore.fetchPasswordItems()
     }
 
+    const getTargetItem = (itm, targetTag) => {
+      itm.forEach((tag) => {
+        return tag.name === targetTag
+      })
+    }
+
     return {
       overlay,
       fetchData,
       printItems,
       userStore,
-      passwordItems: computed(() => userStore.getPasswordItemsByTag),
+      passwordItems: computed(() => {
+        userStore.getPasswordItems.filter((itm) => {
+          return getTargetItem(itm, targetViewTag.value)
+        })
+      }),
       targetViewTag,
       username
     }
