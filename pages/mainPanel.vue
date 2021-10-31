@@ -45,7 +45,7 @@
                 <div class="category-item-indicator">{{ userStore.getPasswordItems.length }}</div>
               </a>
               <hr>
-              <a v-for="slot in userStore.getTagSlots" :key="slot.id" href="#" class="category-item" @click="userStore.changeTargetItems(slot.name)">
+              <a v-for="slot in userStore.getTagSlots" :key="slot.id" href="#" class="category-item" @click="targetViewtag = slot.name">
                 <div class="category-item-title">
                   <i class="category-item-icon twa twa-telephone" />
                   {{ slot.name }}
@@ -278,12 +278,22 @@ export default defineComponent({
       userStore.fetchPasswordItems()
     }
 
+    const getTargetItem = (itm, targetTag) => {
+      itm.forEach((tag) => {
+        return tag.name === targetTag
+      })
+    }
+
     return {
       overlay,
       fetchData,
       printItems,
       userStore,
-      passwordItems: computed(() => userStore.getPasswordItemsByTag),
+      passwordItems: computed(() => {
+        userStore.getPasswordItems.filter((itm) => {
+          return getTargetItem(itm, targetViewTag.value)
+        })
+      }),
       targetViewTag,
       username
     }
