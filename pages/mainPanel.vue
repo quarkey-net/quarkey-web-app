@@ -290,7 +290,16 @@ export default defineComponent({
 
     const passwordItems = computed(() => {
       // return storedPasswordItems.filter(itm => getTargetItem(itm, targetViewTag.value))
-      return userStore.getPasswordItems.filter(itm => itm.login === 'nicdouille38')
+      // eslint-disable-next-line prefer-const
+      let data = []
+      userStore.getPasswordItems.forEach((itm) => {
+        itm.tags.forEach((tag) => {
+          if (tag.name === targetViewTag.value) {
+            data.push(itm)
+          }
+        })
+      })
+      return data
     })
 
     return {
