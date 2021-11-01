@@ -40,12 +40,12 @@
               My vault
             </div>
             <div class="category-block-list">
-              <a href="#" class="category-item">
+              <a href="#" class="category-item" @click="targetViewTag = 'global'">
                 <div class="category-item-title">All entries</div>
                 <div class="category-item-indicator">{{ userStore.getPasswordItems.length }}</div>
               </a>
               <hr>
-              <a v-for="slot in userStore.getTagSlots" :key="slot.id" href="#" class="category-item" @click="targetViewtag = slot.name">
+              <a v-for="slot in userStore.getTagSlots" :key="slot.id" href="#" class="category-item" @click="targetViewTag = slot.name">
                 <div class="category-item-title">
                   <i class="category-item-icon twa twa-telephone" />
                   {{ slot.name }}
